@@ -20,36 +20,36 @@ namespace Reserva.Infra.Data.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        public void Alterar(T entidade)
+        public void Update(T entidade)
         {
             _dbSet.Update(entidade);
             _context.SaveChanges();
         }
 
-        public void Cadastrar(T entidade)
+        public void Create(T entidade)
         {
             _dbSet.Add(entidade);
             _context.SaveChanges();
         }
 
-        public void Deletar(int id)
+        public void Delete(int id)
         {
-            _dbSet.Remove(ObterPorId(id));
+            _dbSet.Remove(GetById(id));
             _context.SaveChanges();
         }
 
-        public void Deletar(T entidade)
+        public void Delete(T entidade)
         {
             _dbSet.Remove(entidade);
             _context.SaveChanges();
         }
 
-        public T ObterPorId(int id)
+        public T GetById(int id)
         {
             return _dbSet.FirstOrDefault(o => o.Id == id);
         }
 
-        public IList<T> ObterTodos()
+        public IList<T> GetAll()
         {
             return _dbSet.ToList();
         }

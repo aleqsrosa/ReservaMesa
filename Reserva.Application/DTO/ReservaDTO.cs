@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.DTO
 {
-    public class ReservaDTO
+    public class ReservaDTO :  BaseDTO
     {
-
+        public ClienteDTO Cliente { get; set; }
+        public LojaDTO Loja { get; set; }
+        public DateTime Horario { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Reserva.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Infra.Data.Mappings
 {
-    public class RedeRestaurante : IEntityTypeConfiguration<RedeRestaurante>
+    public class RedeRestauranteMap : IEntityTypeConfiguration<RedeRestaurante>
     {
         public void Configure(EntityTypeBuilder<RedeRestaurante> builder)
         {

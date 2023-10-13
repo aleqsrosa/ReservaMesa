@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Reserva.Application.AutoMapper
+namespace Reserva.Application.Services
 {
-    public class AutoMapper
+    public class ReservaAppService  
     {
     }
 }

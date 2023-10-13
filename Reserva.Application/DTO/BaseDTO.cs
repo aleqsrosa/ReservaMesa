@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Reserva.Application.Services
+namespace Reserva.Application.DTO
 {
-    internal class ReservaService
+    public class BaseDTO 
     {
+        public int Id { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.Services
 {
-    internal class RedeRestauranteService
+    internal class RedeRestauranteAppService
     {
     }
 }
