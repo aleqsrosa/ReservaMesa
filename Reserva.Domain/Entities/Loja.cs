@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Reserva.Domain.Models;
 
 namespace Reserva.Domain.Entities
 {
-    internal class Loja
+    public class Loja : Entity
     {
+        public string Nome { get; set; }
+        public Endereco Endereco { get; set; }
+        public RedeRestaurante RedeRestaurante { get; set; }
+
     }
 }

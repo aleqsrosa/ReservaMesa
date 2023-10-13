@@ -5,6 +5,22 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservaMesa", "ReservaMesa\ReservaMesa.csproj", "{6C0E7E98-4649-4BAE-8A54-9391F1DDEF11}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- Domain", "3- Domain", "{02AF3AF5-B910-4878-A8F7-B58DB40237BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4- Infra", "4- Infra", "{8F7D7F76-0751-4D46-A01C-F8B7281B929B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2- Application", "2- Application", "{3131D845-DE06-4CF8-AC03-0DF5270EC953}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Services", "1- Services", "{F8123819-EF06-4EDE-9A25-0A8A1559EBB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reserva.Application", "Reserva.Application\Reserva.Application.csproj", "{D6950DB3-9C3E-4178-8C46-D1199B88A5E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reserva.Domain", "Reserva.Domain\Reserva.Domain.csproj", "{B851BF6D-B94F-4627-A57A-3D4D50129CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reserva.Infra.Data", "Reserva.Infra.Data\Reserva.Infra.Data.csproj", "{FF66BCFD-E673-4563-A2D0-E45D6DA5125C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reserva.Infra.IoC", "Reserva.Infra.IoC\Reserva.Infra.IoC.csproj", "{06A4606F-5D1E-46F8-A3F5-FE303C2A0130}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +31,32 @@ Global
 		{6C0E7E98-4649-4BAE-8A54-9391F1DDEF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C0E7E98-4649-4BAE-8A54-9391F1DDEF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C0E7E98-4649-4BAE-8A54-9391F1DDEF11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6950DB3-9C3E-4178-8C46-D1199B88A5E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6950DB3-9C3E-4178-8C46-D1199B88A5E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6950DB3-9C3E-4178-8C46-D1199B88A5E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6950DB3-9C3E-4178-8C46-D1199B88A5E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B851BF6D-B94F-4627-A57A-3D4D50129CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B851BF6D-B94F-4627-A57A-3D4D50129CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B851BF6D-B94F-4627-A57A-3D4D50129CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B851BF6D-B94F-4627-A57A-3D4D50129CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF66BCFD-E673-4563-A2D0-E45D6DA5125C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF66BCFD-E673-4563-A2D0-E45D6DA5125C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF66BCFD-E673-4563-A2D0-E45D6DA5125C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF66BCFD-E673-4563-A2D0-E45D6DA5125C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A4606F-5D1E-46F8-A3F5-FE303C2A0130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06A4606F-5D1E-46F8-A3F5-FE303C2A0130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06A4606F-5D1E-46F8-A3F5-FE303C2A0130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06A4606F-5D1E-46F8-A3F5-FE303C2A0130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C0E7E98-4649-4BAE-8A54-9391F1DDEF11} = {F8123819-EF06-4EDE-9A25-0A8A1559EBB2}
+		{D6950DB3-9C3E-4178-8C46-D1199B88A5E1} = {3131D845-DE06-4CF8-AC03-0DF5270EC953}
+		{B851BF6D-B94F-4627-A57A-3D4D50129CA4} = {02AF3AF5-B910-4878-A8F7-B58DB40237BA}
+		{FF66BCFD-E673-4563-A2D0-E45D6DA5125C} = {8F7D7F76-0751-4D46-A01C-F8B7281B929B}
+		{06A4606F-5D1E-46F8-A3F5-FE303C2A0130} = {8F7D7F76-0751-4D46-A01C-F8B7281B929B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB70BB1F-8C49-492A-B5F7-4ADAACB0A353}
