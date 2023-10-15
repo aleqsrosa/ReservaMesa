@@ -21,7 +21,7 @@ namespace ReservaMesa.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_clienteService.());
+            return Ok(_clienteService.GetAll());
         }
 
         [HttpPost, AllowAnonymous]
@@ -30,11 +30,12 @@ namespace ReservaMesa.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(_clienteService.Post(clienteDTO));
+            _clienteService.Post(clienteDTO);
+            return Ok("Cliente Cadastrado");
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public IActionResult GetById(int id)
         {
             return Ok(_clienteService.GetById(id));
         }
@@ -42,15 +43,16 @@ namespace ReservaMesa.Controllers
         [HttpPut]
         public IActionResult Put(ClienteDTO clienteDTO)
         {
-            return Ok(_clienteService.Put(clienteDTO));
+            _clienteService.Put(clienteDTO);
+            return Ok("Cliente alterado");
         }
 
         [HttpDelete]
         public IActionResult Delete(int Id)
         {
-            return Ok(_clienteService.Delete(Id));
+            _clienteService.Delete(Id);
+            return Ok("Cliente excluído");
         }
-
-       
+               
     }
 }

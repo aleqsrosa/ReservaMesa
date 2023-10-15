@@ -22,33 +22,33 @@ namespace Reserva.Application.Services
             _mapper = mapper;                
         }
 
-        public bool Delete(string id)
+        public void Delete(int id)
         {
-            Cliente _cliente = _clienteRepository.Find(x => x.Id == userId && !x.IsDeleted);
+            Cliente _cliente = _clienteRepository.GetById(id);
             if (_cliente == null)
                 throw new Exception("User not found");
 
-            return _clienteRepository.(_cliente);
+            _clienteRepository.Delete(_cliente);
         }
 
-        public List<ClienteDTO> Get()
+        public List<ClienteDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<ClienteDTO>>(_clienteRepository.GetAll());
         }
 
-        public ClienteDTO GetById(string id)
+        public ClienteDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<ClienteDTO>(_clienteRepository.GetById(id));
         }
 
-        public bool Post(ClienteDTO userViewModel)
+        public void Post(ClienteDTO clienteDTO)
         {
-            throw new NotImplementedException();
+            _clienteRepository.Create(_mapper.Map<Cliente>(clienteDTO));
         }
 
-        public bool Put(ClienteDTO userViewModel)
+        public void Put(ClienteDTO clienteDTO)
         {
-            throw new NotImplementedException();
+            _clienteRepository.Update(_mapper.Map<Cliente>(clienteDTO));
         }
     }
 }

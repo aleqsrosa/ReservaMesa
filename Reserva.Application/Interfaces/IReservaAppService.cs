@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.Interfaces
 {
-    public interface IClienteAppService
+    public interface IReservaAppService
     {
-        List<ClienteDTO> GetAll();
-        void Post(ClienteDTO clienteDTO);
-        ClienteDTO GetById(int id);
-        void Put(ClienteDTO clienteDTO);
+        List<ReservaDTO> GetAll();
+        void Post(ReservaDTO clienteDTO);
+        ReservaDTO GetById(int id);
+        void Put(ReservaDTO clienteDTO);
         void Delete(int id);
     }
 }

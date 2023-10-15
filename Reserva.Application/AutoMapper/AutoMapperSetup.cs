@@ -15,19 +15,19 @@ namespace Reserva.Application.AutoMapper
         {
             #region ViewModelToDomain
 
-            CreateMap<ClienteDTO, Cliente>();
-            CreateMap<LojaDTO, Loja>(); 
-            CreateMap<RedeRestauranteDTO, RedeRestaurante>();
+            CreateMap<ReservaDTO, Cliente>();
+            CreateMap<ReservaDTO, Loja>(); 
+            CreateMap<ReservaDTO, RedeRestaurante>();
             CreateMap<ReservaDTO, Domain.Entities.Reserva>();
 
             #endregion
 
             #region DomainToViewModel
 
-            CreateMap<Loja, LojaDTO>();
-            CreateMap<RedeRestaurante, RedeRestauranteDTO>();
+            CreateMap<Loja, ReservaDTO>();
+            CreateMap<RedeRestaurante, ReservaDTO>();
             CreateMap<Domain.Entities.Reserva, ReservaDTO>();
-            CreateMap<Cliente, ClienteDTO>();
+            CreateMap<Cliente, ReservaDTO>();
 
             #endregion
         }
