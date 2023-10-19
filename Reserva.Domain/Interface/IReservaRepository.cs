@@ -8,5 +8,6 @@ namespace Reserva.Domain.Interface
 {
     public interface IReservaRepository : IRepository<Domain.Entities.Reserva>
     {
+
     }
 }

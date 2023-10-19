@@ -12,6 +12,8 @@ namespace Reserva.Domain.Entities
         public string Nome { get; set; }
         public Endereco Endereco { get; set; }
         public RedeRestaurante RedeRestaurante { get; set; }
+        public int RedeRestauranteId { get; set; }
+        public int EnderecoId { get; set; }
 
     }
 }

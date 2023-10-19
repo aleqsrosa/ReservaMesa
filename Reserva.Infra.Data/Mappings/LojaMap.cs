@@ -14,9 +14,21 @@ namespace Reserva.Infra.Data.Mappings
         public void Configure(EntityTypeBuilder<Loja> builder)
         {
             builder.ToTable("Loja");
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.Id)
+            builder.HasKey(l => l.Id);
+            builder.Property(l => l.Id)
             .HasColumnType("INT").UseIdentityColumn();
+
+            builder.Property(l => l.Nome)
+                .HasColumnType("Varchar(100)")
+                .IsRequired();
+
+            builder.HasOne(l => l.Endereco)
+                .WithOne(e => e.Loja)
+                .HasForeignKey<Loja>(l => l.EnderecoId);
+
+            builder.HasOne(l => l.RedeRestaurante)
+                .WithMany(r => r.Lojas)
+                .HasForeignKey(r => r.RedeRestauranteId);
         }
     }
 }

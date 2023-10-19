@@ -16,9 +16,12 @@ namespace Reserva.Infra.Data.Mappings
             builder.ToTable("Cliente");
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id)
-            .HasColumnType("INT").UseIdentityColumn();
-            builder.Property(p => p.Nome).HasColumnType("Varchar(100)");
-            builder.Property(p => p.Telefone).HasColumnType("Varchar(100)");
+                .HasColumnType("INT")
+                .UseIdentityColumn();
+            builder.Property(p => p.Nome)
+                .HasColumnType("Varchar(100)");
+            builder.Property(p => p.Telefone)
+                .HasColumnType("Varchar(100)");
         }
     }
 }

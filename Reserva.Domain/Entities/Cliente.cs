@@ -11,5 +11,7 @@ namespace Reserva.Domain.Entities
     {
         public string Nome { get; set; }
         public string Telefone { get; set; }
+        public Reserva Reserva { get; set; }
+
     }
 }

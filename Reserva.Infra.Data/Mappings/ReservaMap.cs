@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Reserva.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,17 @@ namespace Reserva.Infra.Data.Mappings
         public void Configure(EntityTypeBuilder<Domain.Entities.Reserva> builder)
         {
             builder.ToTable("Reserva");
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.Id)
+            builder.HasKey(r => r.Id);
+            builder.Property(r => r.Id)
             .HasColumnType("INT").UseIdentityColumn();
+
+            builder.Property(r => r.Capacidade)
+                .HasColumnType("INT");
+
+            builder.HasOne(r => r.Cliente)
+               .WithOne(c => c.Reserva)
+               .HasForeignKey<Domain.Entities.Reserva>(c => c.ClienteId);
+
         }
     }
 }

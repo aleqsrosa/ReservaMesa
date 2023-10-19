@@ -16,7 +16,16 @@ namespace Reserva.Infra.Data.Mappings
             builder.ToTable("RedeRestaurante");
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id)
-            .HasColumnType("INT").UseIdentityColumn();
+                .HasColumnType("INT")
+                .UseIdentityColumn();
+
+            builder.Property(p => p.Nome)
+                .HasColumnType("Varchar(100)")
+                .IsRequired();
+
+            builder.HasMany(l => l.Lojas)
+                .WithOne(r => r.RedeRestaurante)
+                .HasPrincipalKey(r => r.LojaId);
         }
     }
 }
