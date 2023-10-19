@@ -7,7 +7,7 @@ using System.Security.Claims;
 namespace ReservaMesa.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController, Authorize]
+    [ApiController]
     public class ClienteController : ControllerBase
     {
 
@@ -18,13 +18,13 @@ namespace ReservaMesa.Controllers
             _clienteService = clienteService;
         }
 
-        [HttpGet]
+        [HttpGet("BuscarCliente")]
         public IActionResult Get()
         {
             return Ok(_clienteService.GetAll());
         }
 
-        [HttpPost, AllowAnonymous]
+        [HttpPost("CadastrarCliente"), AllowAnonymous]
         public IActionResult Post(ClienteDTO clienteDTO)
         {
             if (!ModelState.IsValid)
@@ -34,20 +34,20 @@ namespace ReservaMesa.Controllers
             return Ok("Cliente Cadastrado");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_clienteService.GetById(id));
         }
 
-        [HttpPut]
+        [HttpPut("AlterarCliente")]
         public IActionResult Put(ClienteDTO clienteDTO)
         {
             _clienteService.Put(clienteDTO);
             return Ok("Cliente alterado");
         }
 
-        [HttpDelete]
+        [HttpDelete("DeletarCliente")]
         public IActionResult Delete(int Id)
         {
             _clienteService.Delete(Id);
