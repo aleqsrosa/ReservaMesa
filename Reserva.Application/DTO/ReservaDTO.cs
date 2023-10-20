@@ -11,5 +11,6 @@ namespace Reserva.Application.DTO
         public ClienteDTO Cliente { get; set; }
         public LojaDTO Loja { get; set; }
         public DateTime Horario { get; set; }
+        public int Capacidade { get; set; }
     }
 }

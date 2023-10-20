@@ -24,6 +24,7 @@ namespace Reserva.Application.Services
         public void Delete(int id)
         {
             RedeRestaurante _RedeRestaurante = _redeRestauranteRepository.GetById(id);
+
             if (_RedeRestaurante == null)
                 throw new Exception("User not found");
 

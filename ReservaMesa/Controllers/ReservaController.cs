@@ -6,7 +6,7 @@ using Reserva.Application.Interfaces;
 namespace ReservaMesa.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController, Authorize]
+    [ApiController]
     public class ReservaController : ControllerBase
     {
         private readonly IReservaAppService _reservaService;

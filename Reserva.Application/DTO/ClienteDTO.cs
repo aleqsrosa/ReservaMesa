@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.DTO
 {
-    public class ClienteDTO
+    public class ClienteDTO : BaseDTO
     {
         public string Nome { get; set; }
         public string Telefone { get; set; }

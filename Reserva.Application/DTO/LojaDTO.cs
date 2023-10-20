@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.DTO
 {
-    public class LojaDTO
+    public class LojaDTO : BaseDTO
     {
         public string Nome { get; set; }
         public EnderecoDTO Endereco { get; set; }
