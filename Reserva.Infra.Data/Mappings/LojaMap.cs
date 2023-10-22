@@ -22,9 +22,30 @@ namespace Reserva.Infra.Data.Mappings
                 .HasColumnType("Varchar(100)")
                 .IsRequired();
 
-            builder.HasOne(l => l.Endereco)
-                .WithOne(e => e.Loja)
-                .HasForeignKey<Loja>(l => l.EnderecoId);
+            builder.OwnsOne(l => l.Endereco)
+                .Property(l => l.Numero)
+                .HasColumnName("Numero")
+                .IsRequired(true);
+
+            builder.OwnsOne(l => l.Endereco)
+                .Property(l => l.Bairro)
+                .HasColumnName("Bairro")
+                .IsRequired(true);
+
+            builder.OwnsOne(l => l.Endereco)
+                .Property(l => l.CEP)
+                .HasColumnName("CEP")
+                .IsRequired(true);
+
+            builder.OwnsOne(l => l.Endereco)
+                .Property(l => l.Cidade)
+                .HasColumnName("Cidade")
+                .IsRequired(true);
+
+            builder.OwnsOne(l => l.Endereco)
+                .Property(l => l.Rua)
+                .HasColumnName("Rua")
+                .IsRequired(true);
 
             builder.HasOne(l => l.RedeRestaurante)
                 .WithMany(r => r.Lojas)

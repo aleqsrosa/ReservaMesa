@@ -14,12 +14,14 @@ namespace Reserva.Application.Services
     public class ClienteAppService : IClienteAppService
     {
         private readonly IClienteRepository _clienteRepository;
+        private readonly ILojaAppService _lojaAppService;
         private readonly IMapper _mapper;
 
-        public ClienteAppService(IClienteRepository clienteRepository, IMapper mapper)
+        public ClienteAppService(IClienteRepository clienteRepository, IMapper mapper, ILojaAppService lojaAppService)
         {
             _clienteRepository = clienteRepository;
-            _mapper = mapper;                
+            _mapper = mapper;
+            _lojaAppService = lojaAppService;
         }
 
         public void Delete(int id)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Reserva.Infra.Data.Context;
 
@@ -11,9 +12,11 @@ using Reserva.Infra.Data.Context;
 namespace Reserva.Infra.Data.Migrations
 {
     [DbContext(typeof(ReservaContext))]
-    partial class ReservaContextModelSnapshot : ModelSnapshot
+    [Migration("20231022165155_Atualização do nome de capacidade para qtdReservas em Reserva")]
+    partial class AtualizaçãodonomedecapacidadeparaqtdReservasemReserva
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +46,41 @@ namespace Reserva.Infra.Data.Migrations
                     b.ToTable("Cliente", (string)null);
                 });
 
+            modelBuilder.Entity("Reserva.Domain.Entities.Endereco", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INT");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("Varchar(50)");
+
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("Varchar(8)");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LojaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Numero")
+                        .HasColumnType("INT");
+
+                    b.Property<string>("Rua")
+                        .IsRequired()
+                        .HasColumnType("Varchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Endereco", (string)null);
+                });
+
             modelBuilder.Entity("Reserva.Domain.Entities.Loja", b =>
                 {
                     b.Property<int>("Id")
@@ -55,7 +93,7 @@ namespace Reserva.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -65,6 +103,9 @@ namespace Reserva.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
 
                     b.HasIndex("RedeRestauranteId");
 
@@ -102,9 +143,6 @@ namespace Reserva.Infra.Data.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("INT");
 
-                    b.Property<int?>("ClienteId1")
-                        .HasColumnType("INT");
-
                     b.Property<DateTime>("Horario")
                         .HasColumnType("datetime2");
 
@@ -119,8 +157,6 @@ namespace Reserva.Infra.Data.Migrations
                     b.HasIndex("ClienteId")
                         .IsUnique();
 
-                    b.HasIndex("ClienteId1");
-
                     b.HasIndex("LojaId");
 
                     b.ToTable("Reserva", (string)null);
@@ -128,6 +164,12 @@ namespace Reserva.Infra.Data.Migrations
 
             modelBuilder.Entity("Reserva.Domain.Entities.Loja", b =>
                 {
+                    b.HasOne("Reserva.Domain.Entities.Endereco", "Endereco")
+                        .WithOne("Loja")
+                        .HasForeignKey("Reserva.Domain.Entities.Loja", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Reserva.Domain.Entities.RedeRestaurante", "RedeRestaurante")
                         .WithMany("Lojas")
                         .HasForeignKey("RedeRestauranteId")
@@ -135,45 +177,7 @@ namespace Reserva.Infra.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("Reserva.Domain.Entities.Endereco", "Endereco", b1 =>
-                        {
-                            b1.Property<int>("LojaId")
-                                .HasColumnType("INT");
-
-                            b1.Property<string>("Bairro")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("Bairro");
-
-                            b1.Property<string>("CEP")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("CEP");
-
-                            b1.Property<string>("Cidade")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("Cidade");
-
-                            b1.Property<int>("Numero")
-                                .HasColumnType("int")
-                                .HasColumnName("Numero");
-
-                            b1.Property<string>("Rua")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("Rua");
-
-                            b1.HasKey("LojaId");
-
-                            b1.ToTable("Loja");
-
-                            b1.WithOwner()
-                                .HasForeignKey("LojaId");
-                        });
-
-                    b.Navigation("Endereco")
-                        .IsRequired();
+                    b.Navigation("Endereco");
 
                     b.Navigation("RedeRestaurante");
                 });
@@ -185,10 +189,6 @@ namespace Reserva.Infra.Data.Migrations
                         .HasForeignKey("Reserva.Domain.Entities.Reserva", "ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Reserva.Domain.Entities.Cliente", null)
-                        .WithMany("Reservas")
-                        .HasForeignKey("ClienteId1");
 
                     b.HasOne("Reserva.Domain.Entities.Loja", "Loja")
                         .WithMany()
@@ -205,8 +205,12 @@ namespace Reserva.Infra.Data.Migrations
                 {
                     b.Navigation("Reserva")
                         .IsRequired();
+                });
 
-                    b.Navigation("Reservas");
+            modelBuilder.Entity("Reserva.Domain.Entities.Endereco", b =>
+                {
+                    b.Navigation("Loja")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Reserva.Domain.Entities.RedeRestaurante", b =>

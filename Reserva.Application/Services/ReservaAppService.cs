@@ -14,12 +14,16 @@ namespace Reserva.Application.Services
     public class ReservaAppService : IReservaAppService
     {
         private readonly IReservaRepository _reservaRepository;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly ILojaAppService _lojaAppService;
         private readonly IMapper _mapper;
 
-        public ReservaAppService(IReservaRepository reservaRepository, IMapper mapper)
+        public ReservaAppService(IReservaRepository reservaRepository, IMapper mapper, IClienteRepository clienteRepository, ILojaAppService lojaAppService)
         {
             _reservaRepository = reservaRepository;
             _mapper = mapper;
+            _clienteRepository = clienteRepository;
+            _lojaAppService = lojaAppService;
         }
 
         public void Delete(int id)
@@ -29,6 +33,10 @@ namespace Reserva.Application.Services
                 throw new Exception("User not found");
 
             _reservaRepository.Delete(_Reserva);
+        }
+
+        public void FazerReserva(int clienteId, int lojaId, DateTime horario, int qtdReserva)
+        {
         }
 
         public List<ReservaDTO> GetAll()
@@ -43,7 +51,13 @@ namespace Reserva.Application.Services
 
         public void Post(ReservaDTO ReservaDTO)
         {
-            _reservaRepository.Create(_mapper.Map<Domain.Entities.Reserva>(ReservaDTO));
+            Loja _loja = _mapper.Map<Loja>(_lojaAppService.GetById(ReservaDTO.LojaId));
+            if (_loja == null)
+                throw new Exception("Loja não encontrada");
+
+            Cliente _cliente = _clienteRepository.GetById(ReservaDTO.ClienteId);
+            var reserva = _cliente.FazerReserva(_loja, ReservaDTO.Horario, ReservaDTO.QtdReserva);
+            _reservaRepository.Create(reserva);
         }
 
         public void Put(ReservaDTO ReservaDTO)

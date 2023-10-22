@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Reserva.Application.DTO;
+using Reserva.Application.Interfaces;
 using Reserva.Domain.Entities;
 using Reserva.Domain.Interface;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.Services
 {
-    public class LojaAppService
+    public class LojaAppService : ILojaAppService
     {
         private readonly ILojaRepository _lojaRepository;
         private readonly IMapper _mapper;

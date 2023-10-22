@@ -20,6 +20,7 @@ namespace Reserva.Infra.IoC
 
             services.AddScoped<IClienteAppService, ClienteAppService>();
             services.AddScoped<IReservaAppService, ReservaAppService>();
+            services.AddScoped<ILojaAppService, LojaAppService>();
             services.AddScoped<IRedeRestauranteRepository, RedeRestauranteRepository>();
 
             #endregion
@@ -28,6 +29,7 @@ namespace Reserva.Infra.IoC
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IReservaRepository, ReservaRepository>();
+            services.AddScoped<ILojaRepository, LojaRepository>();
             services.AddScoped<IRedeRestauranteRepository, RedeRestauranteRepository>();
 
             #endregion

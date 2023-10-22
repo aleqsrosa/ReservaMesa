@@ -1,4 +1,5 @@
 ﻿using Reserva.Application.DTO;
+using Reserva.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.Interfaces
 {
-    public interface IClienteAppService
+    public interface IClienteAppService : IAppService<ClienteDTO>
     {
-        List<ClienteDTO> GetAll();
-        void Post(ClienteDTO clienteDTO);
-        ClienteDTO GetById(int id);
-        void Put(ClienteDTO clienteDTO);
-        void Delete(int id);
     }
 }

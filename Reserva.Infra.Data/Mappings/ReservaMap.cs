@@ -18,7 +18,7 @@ namespace Reserva.Infra.Data.Mappings
             builder.Property(r => r.Id)
             .HasColumnType("INT").UseIdentityColumn();
 
-            builder.Property(r => r.Capacidade)
+            builder.Property(r => r.QTDReserva)
                 .HasColumnType("INT");
 
             builder.HasOne(r => r.Cliente)

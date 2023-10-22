@@ -9,6 +9,5 @@ namespace Reserva.Domain.Interface
 {
     public interface IClienteRepository : IRepository<Cliente>
     {
-
     }
 }
