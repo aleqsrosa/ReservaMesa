@@ -28,15 +28,12 @@ namespace Reserva.Application.Services
 
         public void Delete(int id)
         {
-            Domain.Entities.Reserva _Reserva = _reservaRepository.GetById(id);
-            if (_Reserva == null)
-                throw new Exception("User not found");
+            Domain.Entities.Reserva reserva = _reservaRepository.GetById(id);
 
-            _reservaRepository.Delete(_Reserva);
-        }
+            if (reserva == null)
+                throw new Exception("Reserva não encontrada");
 
-        public void FazerReserva(int clienteId, int lojaId, DateTime horario, int qtdReserva)
-        {
+            _reservaRepository.Delete(reserva);
         }
 
         public List<ReservaDTO> GetAll()
@@ -52,17 +49,28 @@ namespace Reserva.Application.Services
         public void Post(ReservaDTO ReservaDTO)
         {
             Loja loja = _mapper.Map<Loja>(_lojaAppService.GetById(ReservaDTO.LojaId));
+
             if (loja == null)
                 throw new Exception("Loja não encontrada");
 
             Cliente cliente = _clienteRepository.GetById(ReservaDTO.ClienteId);
+
+            if (cliente == null)
+                throw new Exception("Cliente não encontrado");
+
             var reserva = new Domain.Entities.Reserva(cliente, loja, ReservaDTO.Horario, ReservaDTO.QtdReserva);
             _reservaRepository.Create(reserva);
         }
 
         public void Put(ReservaDTO ReservaDTO)
         {
-            _reservaRepository.Update(_mapper.Map<Domain.Entities.Reserva>(ReservaDTO));
+            Domain.Entities.Reserva reserva = _reservaRepository.GetById(ReservaDTO.Id);
+
+            reserva.AtualizarHorario(ReservaDTO.Horario);
+
+            reserva.AtualizarQuantidade(ReservaDTO.QtdReserva);
+
+            _reservaRepository.Update(reserva);
         }
     }
 }
