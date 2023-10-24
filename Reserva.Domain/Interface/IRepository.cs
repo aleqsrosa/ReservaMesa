@@ -8,7 +8,7 @@ namespace Reserva.Domain.Interface
 {
     public interface IRepository<T> where T : class
     {
-        IList<T> GetAll();
+        IList<T> GetAll(params string[] includeProperties);
         T GetById(int id);
         void Create(T entidade);
         void Update(T entidade);

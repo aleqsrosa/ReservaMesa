@@ -49,9 +49,13 @@ namespace Reserva.Infra.Data.Repositories
             return _dbSet.FirstOrDefault(o => o.Id == id);
         }
 
-        public IList<T> GetAll()
+        public IList<T> GetAll(params string[] includeProperties)
         {
-            return _dbSet.ToList();
+            IQueryable<T> query = _dbSet;
+
+            includeProperties?.ToList().ForEach(includeProperty => query = query.Include(includeProperty));
+
+            return query.ToList();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Reserva.Infra.IoC
             services.AddScoped<IClienteAppService, ClienteAppService>();
             services.AddScoped<IReservaAppService, ReservaAppService>();
             services.AddScoped<ILojaAppService, LojaAppService>();
-            services.AddScoped<IRedeRestauranteRepository, RedeRestauranteRepository>();
+            services.AddScoped<IRedeRestauranteAppService, RedeRestauranteAppService>();
 
             #endregion
 

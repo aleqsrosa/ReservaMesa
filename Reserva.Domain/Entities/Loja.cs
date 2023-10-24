@@ -20,13 +20,17 @@ namespace Reserva.Domain.Entities
             RedeRestaurante = redeRestaurante;
             CapacidadeTotal = capacidadeTotal;
         }
-
-        public string Nome { get; set; }
-        public Endereco Endereco { get; set; }
-        public RedeRestaurante RedeRestaurante { get; set; }
-        public int RedeRestauranteId { get; set; }
+        public string Nome { get; private set; }
+        public Endereco Endereco { get; private set; }
+        public RedeRestaurante RedeRestaurante { get; private set; }
+        public int RedeRestauranteId { get; private set; }
         public int CapacidadeTotal { get; set; }
-        public int EnderecoId { get; set; }
+        public int EnderecoId { get; private set; }
+
+        public int CapacidadeMaximaDisponivel()
+        {
+            return 0; //Reservas.Sum(x => x.QTDReserva);
+        }
 
     }
 }

@@ -36,6 +36,11 @@ namespace Reserva.Domain.Entities
             Horario = horario;
             QTDReserva = qtdReserva;
             ClienteId = cliente.Id;
+
+            if (Loja.CapacidadeMaximaDisponivel() > Loja.CapacidadeTotal)
+            {
+                throw new InvalidOperationException("MUDARTEXTO");
+            }
         }
 
         // Método para atualizar a quantidade da reserva

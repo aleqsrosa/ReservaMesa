@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Reserva.Application.DTO;
+using Reserva.Application.Interfaces;
 using Reserva.Domain.Entities;
 using Reserva.Domain.Interface;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Reserva.Application.Services
 {
-    public class RedeRestauranteAppService
+    public class RedeRestauranteAppService : IRedeRestauranteAppService
     {
         private readonly IRedeRestauranteRepository _redeRestauranteRepository;
         private readonly IMapper _mapper;

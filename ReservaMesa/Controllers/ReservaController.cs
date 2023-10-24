@@ -17,7 +17,7 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpGet("BuscarCliente")]
-        public IActionResult Get()
+        public IActionResult BuscarCliente()
         {
             return Ok(_reservaService.GetAll());
         }
@@ -33,20 +33,20 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpGet("BuscarPorId/{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult BuscarPorId(int id)
         {
             return Ok(_reservaService.GetById(id));
         }
 
         [HttpPut("AlterarReserva")]
-        public IActionResult Put(ReservaDTO ReservaDTO)
+        public IActionResult AlterarReserva(ReservaDTO ReservaDTO)
         {
             _reservaService.Put(ReservaDTO);
-            return Ok("Reserva alterado");
+            return Ok("Reserva alterada");
         }
 
         [HttpDelete("CancelarReserva")]
-        public IActionResult Delete(int Id)
+        public IActionResult CancelarReserva(int Id)
         {
             _reservaService.Delete(Id);
             return Ok("Reserva excluída");
