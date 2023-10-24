@@ -51,12 +51,12 @@ namespace Reserva.Application.Services
 
         public void Post(ReservaDTO ReservaDTO)
         {
-            Loja _loja = _mapper.Map<Loja>(_lojaAppService.GetById(ReservaDTO.LojaId));
-            if (_loja == null)
+            Loja loja = _mapper.Map<Loja>(_lojaAppService.GetById(ReservaDTO.LojaId));
+            if (loja == null)
                 throw new Exception("Loja não encontrada");
 
-            Cliente _cliente = _clienteRepository.GetById(ReservaDTO.ClienteId);
-            var reserva = _cliente.FazerReserva(_loja, ReservaDTO.Horario, ReservaDTO.QtdReserva);
+            Cliente cliente = _clienteRepository.GetById(ReservaDTO.ClienteId);
+            var reserva = new Domain.Entities.Reserva(cliente, loja, ReservaDTO.Horario, ReservaDTO.QtdReserva);
             _reservaRepository.Create(reserva);
         }
 

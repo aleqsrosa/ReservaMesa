@@ -47,6 +47,11 @@ namespace Reserva.Infra.Data.Mappings
                 .HasColumnName("Rua")
                 .IsRequired(true);
 
+            builder.OwnsOne(l => l.Endereco)
+                .Property(l => l.Complemento)
+                .HasColumnName("Complemento")
+                .IsRequired(false);
+
             builder.HasOne(l => l.RedeRestaurante)
                 .WithMany(r => r.Lojas)
                 .HasForeignKey(r => r.RedeRestauranteId);

@@ -10,15 +10,13 @@ namespace Reserva.Domain.Entities
 {
     public class Reserva : Entity
     {
-        public Reserva()
-        {
-                
-        }
         public Cliente Cliente { get; private set; }
         public Loja Loja { get; private set; }
         public DateTime Horario { get; private set; }
         public int QTDReserva { get; private set; }
         public int ClienteId { get; private set; }
+
+        protected Reserva() { }
 
         // Construtor para criar uma nova reserva
         public Reserva(Cliente cliente, Loja loja, DateTime horario, int qtdReserva)
@@ -54,6 +52,17 @@ namespace Reserva.Domain.Entities
             }
 
             QTDReserva = novaQTDReserva;
+        }
+
+        // Método para atualizar o horário da reserva
+        public void AtualizarHorario(DateTime novoHorario)
+        {
+            if (Horario >= novoHorario)
+            {
+                throw new InvalidOperationException("Horário precisa ser maior que o anterior.");
+            }
+
+            Horario = novoHorario;
         }
     }
 
