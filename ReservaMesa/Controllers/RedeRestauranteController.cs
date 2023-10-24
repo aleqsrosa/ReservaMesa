@@ -17,13 +17,13 @@ namespace ReservaMesa.Controllers
             _redeRestauranteService = redeRestauranteService;
         }
 
-        [HttpGet]
+        [HttpGet("BuscarRedeRestaurante")]
         public IActionResult Get()
         {
             return Ok(_redeRestauranteService.GetAll());
         }
 
-        [HttpPost, AllowAnonymous]
+        [HttpPost("CadastraRedeRestaurante")]
         public IActionResult Post(RedeRestauranteDTO RedeRestauranteDTO)
         {
             if (!ModelState.IsValid)
@@ -33,20 +33,20 @@ namespace ReservaMesa.Controllers
             return Ok("RedeRestaurante Cadastrado");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_redeRestauranteService.GetById(id));
         }
 
-        [HttpPut]
+        [HttpPut("AlterarRedeRestaurante")]
         public IActionResult Put(RedeRestauranteDTO RedeRestauranteDTO)
         {
             _redeRestauranteService.Put(RedeRestauranteDTO);
             return Ok("RedeRestaurante alterado");
         }
 
-        [HttpDelete]
+        [HttpDelete("DeletarRedeRestaurante")]
         public IActionResult Delete(int Id)
         {
             _redeRestauranteService.Delete(Id);

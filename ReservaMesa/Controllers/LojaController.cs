@@ -16,13 +16,13 @@ namespace ReservaMesa.Controllers
             _lojaService = LojaService;
         }
 
-        [HttpGet]
+        [HttpGet("BuscarLoja")]
         public IActionResult Get()
         {
             return Ok(_lojaService.GetAll());
         }
 
-        [HttpPost, AllowAnonymous]
+        [HttpPost("CadastrarLoja")]
         public IActionResult Post(LojaDTO lojaDTO)
         {
             if (!ModelState.IsValid)
@@ -32,20 +32,20 @@ namespace ReservaMesa.Controllers
             return Ok("Loja Cadastrado");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_lojaService.GetById(id));
         }
 
-        [HttpPut]
+        [HttpPut("AlterarLoja")]
         public IActionResult Put(LojaDTO lojaDTO)
         {
             _lojaService.Put(lojaDTO);
             return Ok("Loja alterado");
         }
 
-        [HttpDelete]
+        [HttpDelete("DeletarLoja")]
         public IActionResult Delete(int Id)
         {
             _lojaService.Delete(Id);

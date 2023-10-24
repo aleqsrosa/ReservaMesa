@@ -16,7 +16,7 @@ namespace ReservaMesa.Controllers
             _reservaService = reservaService;
         }
 
-        [HttpGet]
+        [HttpGet("BuscarCliente")]
         public IActionResult Get()
         {
             return Ok(_reservaService.GetAll());
@@ -32,7 +32,7 @@ namespace ReservaMesa.Controllers
             return Ok("Reserva Cadastrada");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_reservaService.GetById(id));
