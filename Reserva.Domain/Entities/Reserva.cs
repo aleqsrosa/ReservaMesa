@@ -1,4 +1,5 @@
-﻿using Reserva.Domain.Models;
+﻿using Reserva.Domain.Enums;
+using Reserva.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace Reserva.Domain.Entities
     {
         public Cliente Cliente { get; private set; }
         public Loja Loja { get; private set; }
-        public DateTime Horario { get; private set; }
+        public DateTime Data { get; private set; }
+        public TurnoEnum Turno { get; private set; }
         public int QTDReserva { get; private set; }
         public int ClienteId { get; private set; }
         public int LojaId { get; private set; }
@@ -20,9 +22,9 @@ namespace Reserva.Domain.Entities
         protected Reserva() { }
 
         // Construtor para criar uma nova reserva
-        public Reserva(Cliente cliente, Loja loja, DateTime horario, int qtdReserva)
+        public Reserva(Cliente cliente, Loja loja, DateTime data, int qtdReserva, TurnoEnum turno)
         {
-            if (horario < DateTime.Now)
+            if (data < DateTime.Now)
             {
                 throw new InvalidOperationException("Não é possível fazer reservas para horários passados.");
             }
@@ -32,16 +34,22 @@ namespace Reserva.Domain.Entities
                 throw new InvalidOperationException("A quantidade da reserva deve ser maior que zero.");
             }
 
+            if (qtdReserva > 10)
+            {
+                throw new InvalidOperationException("A quantidade máxima de reserva por cliente é de 10 lugares.");
+            }
+
             Cliente = cliente ?? throw new ArgumentNullException(nameof(cliente));
             Loja = loja ?? throw new ArgumentNullException(nameof(loja));
-            Horario = horario;
+            Data = data;
             QTDReserva = qtdReserva;
+            Turno = turno;
             ClienteId = cliente.Id;
             LojaId = loja.Id;
 
-            if (Loja.CapacidadeMaximaDisponivel() > Loja.CapacidadeTotal)
+            if (!Loja.VerificarLimiteReservasPorDia(data, turno, qtdReserva))
             {
-                throw new InvalidOperationException("MUDARTEXTO");
+                throw new InvalidOperationException("Capacidade máxima do turno atingida");
             }
         }
 
@@ -62,14 +70,14 @@ namespace Reserva.Domain.Entities
         }
 
         // Método para atualizar o horário da reserva
-        public void AtualizarHorario(DateTime novoHorario)
+        public void AtualizarHorario(DateTime novaData)
         {
-            if (Horario >= novoHorario)
+            if (Data >= novaData)
             {
                 throw new InvalidOperationException("Horário precisa ser maior que o anterior.");
             }
 
-            Horario = novoHorario;
+            Data = novaData;
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reserva.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Reserva.Application.DTO
         public int LojaId { get; set; }
         public DateTime Horario { get; set; }
         public int QtdReserva { get; set; }
+        public TurnoEnum Turno { get; set; }
         public ClienteDTO Cliente { get; set; }
     }
 }

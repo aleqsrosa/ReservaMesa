@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Reserva.Domain.Enums;
 using Reserva.Domain.Models;
 
 namespace Reserva.Domain.Entities
@@ -13,11 +14,11 @@ namespace Reserva.Domain.Entities
         {
             
         }
-        public Loja(string nome, Endereco endereco, RedeRestaurante redeRestaurante, int capacidadeTotal)
+        public Loja(string nome, Endereco endereco, int redeRestauranteId, int capacidadeTotal)
         {
             Nome = nome;
             Endereco = new Endereco(endereco.Rua, endereco.Bairro, endereco.Numero, endereco.Cidade, endereco.CEP);
-            RedeRestaurante = redeRestaurante;
+            RedeRestauranteId = redeRestauranteId;
             CapacidadeTotal = capacidadeTotal;
         }
         public string Nome { get; private set; }
@@ -27,9 +28,11 @@ namespace Reserva.Domain.Entities
         public int CapacidadeTotal { get; set; }
         public virtual ICollection<Reserva> Reservas { get; set; }
 
-        public int CapacidadeMaximaDisponivel()
+        public bool VerificarLimiteReservasPorDia(DateTime dataDaReserva, TurnoEnum turno, int qtdReserva)
         {
-            return 0; //Reservas.Sum(x => x.QTDReserva);
+            var reservasNoDia = Reservas.Where(r => r.Data.Date == dataDaReserva.Date && r.Turno == turno).Sum(x => x.QTDReserva);
+
+            return CapacidadeTotal - reservasNoDia >= qtdReserva;
         }
 
     }

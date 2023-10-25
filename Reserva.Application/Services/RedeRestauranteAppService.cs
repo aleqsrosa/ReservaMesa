@@ -24,7 +24,7 @@ namespace Reserva.Application.Services
 
         public void Delete(int id)
         {
-            RedeRestaurante _RedeRestaurante = _redeRestauranteRepository.GetById(id);
+            RedeRestaurante _RedeRestaurante = _redeRestauranteRepository.GetById<RedeRestaurante>(id);
 
             if (_RedeRestaurante == null)
                 throw new Exception("User not found");
@@ -39,7 +39,7 @@ namespace Reserva.Application.Services
 
         public RedeRestauranteDTO GetById(int id)
         {
-            return _mapper.Map<RedeRestauranteDTO>(_redeRestauranteRepository.GetById(id));
+            return _mapper.Map<RedeRestauranteDTO>(_redeRestauranteRepository.GetById<RedeRestaurante>(id));
         }
 
         public void Post(RedeRestauranteDTO RedeRestauranteDTO)

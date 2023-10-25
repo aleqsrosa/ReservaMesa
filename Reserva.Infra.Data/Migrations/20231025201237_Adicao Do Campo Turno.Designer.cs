@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Reserva.Infra.Data.Context;
 
@@ -11,9 +12,11 @@ using Reserva.Infra.Data.Context;
 namespace Reserva.Infra.Data.Migrations
 {
     [DbContext(typeof(ReservaContext))]
-    partial class ReservaContextModelSnapshot : ModelSnapshot
+    [Migration("20231025201237_Adicao Do Campo Turno")]
+    partial class AdicaoDoCampoTurno
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,7 +113,8 @@ namespace Reserva.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("ClienteId")
+                        .IsUnique();
 
                     b.HasIndex("LojaId");
 
@@ -175,8 +179,8 @@ namespace Reserva.Infra.Data.Migrations
             modelBuilder.Entity("Reserva.Domain.Entities.Reserva", b =>
                 {
                     b.HasOne("Reserva.Domain.Entities.Cliente", "Cliente")
-                        .WithMany("Reservas")
-                        .HasForeignKey("ClienteId")
+                        .WithOne("Reserva")
+                        .HasForeignKey("Reserva.Domain.Entities.Reserva", "ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -193,7 +197,8 @@ namespace Reserva.Infra.Data.Migrations
 
             modelBuilder.Entity("Reserva.Domain.Entities.Cliente", b =>
                 {
-                    b.Navigation("Reservas");
+                    b.Navigation("Reserva")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Reserva.Domain.Entities.Loja", b =>

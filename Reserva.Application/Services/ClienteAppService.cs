@@ -26,7 +26,8 @@ namespace Reserva.Application.Services
 
         public void Delete(int id)
         {
-            Cliente _cliente = _clienteRepository.GetById(id);
+            Cliente _cliente = _clienteRepository.GetById<Cliente>(id);
+
             if (_cliente == null)
                 throw new Exception("User not found");
 
@@ -35,12 +36,12 @@ namespace Reserva.Application.Services
 
         public List<ClienteDTO> GetAll()
         {
-            return _mapper.Map<List<ClienteDTO>>(_clienteRepository.GetAll<Cliente>(cliente => cliente.Reserva));
+            return _mapper.Map<List<ClienteDTO>>(_clienteRepository.GetAll<Cliente>(cliente => cliente.Reservas));
         }
 
         public ClienteDTO GetById(int id)
         {
-            return _mapper.Map<ClienteDTO>(_clienteRepository.GetById(id));
+            return _mapper.Map<ClienteDTO>(_clienteRepository.GetById<Cliente>(id));
         }
 
         public void Post(ClienteDTO clienteDTO)

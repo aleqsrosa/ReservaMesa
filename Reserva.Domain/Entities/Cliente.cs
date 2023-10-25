@@ -11,7 +11,7 @@ namespace Reserva.Domain.Entities
     {
         public string Nome { get; private set; }
         public string Telefone { get; private set; }
-        public Reserva Reserva { get; private set; }
+        public virtual ICollection<Reserva> Reservas { get; set; }
 
         protected Cliente() { }
 

@@ -22,8 +22,12 @@ namespace Reserva.Infra.Data.Mappings
                 .HasColumnType("INT");
 
             builder.HasOne(r => r.Cliente)
-               .WithOne(c => c.Reserva)
-               .HasForeignKey<Domain.Entities.Reserva>(c => c.ClienteId);
+               .WithMany(c => c.Reservas)
+               .HasForeignKey(c => c.ClienteId);
+
+            builder.HasOne(r => r.Loja)
+               .WithMany(l => l.Reservas)
+               .HasForeignKey(l => l.LojaId);
 
         }
     }
