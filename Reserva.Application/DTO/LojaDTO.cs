@@ -12,5 +12,6 @@ namespace Reserva.Application.DTO
         public string Nome { get; set; }
         public EnderecoDTO Endereco { get; set; }
         public int RedeRestauranteId { get; set; }
+        public List<ReservaDTO> Reservas { get; set; }  
     }
 }

@@ -15,6 +15,7 @@ namespace Reserva.Domain.Entities
         public DateTime Horario { get; private set; }
         public int QTDReserva { get; private set; }
         public int ClienteId { get; private set; }
+        public int LojaId { get; private set; }
 
         protected Reserva() { }
 
@@ -32,10 +33,11 @@ namespace Reserva.Domain.Entities
             }
 
             Cliente = cliente ?? throw new ArgumentNullException(nameof(cliente));
-            Loja = new Loja(loja.Nome, loja.Endereco, loja.RedeRestaurante, loja.CapacidadeTotal);
+            Loja = loja ?? throw new ArgumentNullException(nameof(loja));
             Horario = horario;
             QTDReserva = qtdReserva;
             ClienteId = cliente.Id;
+            LojaId = loja.Id;
 
             if (Loja.CapacidadeMaximaDisponivel() > Loja.CapacidadeTotal)
             {

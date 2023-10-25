@@ -33,7 +33,7 @@ namespace Reserva.Application.Services
 
         public List<LojaDTO> GetAll()
         {
-            return _mapper.Map<List<LojaDTO>>(_lojaRepository.GetAll("Reserva").ToList());
+            return _mapper.Map<List<LojaDTO>>(_lojaRepository.GetAll<Loja>(loja => loja.Reservas).ToList());
         }
 
         public LojaDTO GetById(int id)

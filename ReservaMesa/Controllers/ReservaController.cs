@@ -16,7 +16,7 @@ namespace ReservaMesa.Controllers
             _reservaService = reservaService;
         }
 
-        [HttpGet("BuscarCliente")]
+        [HttpGet("BuscarReservas")]
         public IActionResult BuscarCliente()
         {
             return Ok(_reservaService.GetAll());

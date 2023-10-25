@@ -34,7 +34,7 @@ namespace Reserva.Application.Services
 
         public List<RedeRestauranteDTO> GetAll()
         {
-            return _mapper.Map<List<RedeRestauranteDTO>>(_redeRestauranteRepository.GetAll());
+            return _mapper.Map<List<RedeRestauranteDTO>>(_redeRestauranteRepository.GetAll<RedeRestaurante>(redeRestaurante => redeRestaurante.Lojas));
         }
 
         public RedeRestauranteDTO GetById(int id)

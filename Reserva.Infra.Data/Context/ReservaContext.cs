@@ -20,6 +20,8 @@ namespace Reserva.Infra.Data.Context
 
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Loja> Loja { get; set; }
+        public DbSet<Domain.Entities.Reserva> Reserva { get; set; }
+        public DbSet<RedeRestaurante> RedeRestaurante { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

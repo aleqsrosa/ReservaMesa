@@ -26,6 +26,7 @@ namespace Reserva.Domain.Entities
         public int RedeRestauranteId { get; private set; }
         public int CapacidadeTotal { get; set; }
         public int EnderecoId { get; private set; }
+        public virtual ICollection<Reserva> Reservas { get; set; }
 
         public int CapacidadeMaximaDisponivel()
         {

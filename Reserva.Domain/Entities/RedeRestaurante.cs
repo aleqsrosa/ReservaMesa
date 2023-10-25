@@ -11,6 +11,5 @@ namespace Reserva.Domain.Entities
     {
         public string Nome { get; set; }
         public ICollection<Loja> Lojas { get; set; }
-        public int LojaId { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using Reserva.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,11 +50,14 @@ namespace Reserva.Infra.Data.Repositories
             return _dbSet.FirstOrDefault(o => o.Id == id);
         }
 
-        public IList<T> GetAll(params string[] includeProperties)
+        public List<T> GetAll<T>(params Expression<Func<T, object>>[] includeProperties) where T : class
         {
-            IQueryable<T> query = _dbSet;
+            IQueryable<T> query = _context.Set<T>();
 
-            includeProperties?.ToList().ForEach(includeProperty => query = query.Include(includeProperty));
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
 
             return query.ToList();
         }

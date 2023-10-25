@@ -22,10 +22,6 @@ namespace Reserva.Infra.Data.Mappings
             builder.Property(p => p.Nome)
                 .HasColumnType("Varchar(100)")
                 .IsRequired();
-
-            builder.HasMany(l => l.Lojas)
-                .WithOne(r => r.RedeRestaurante)
-                .HasPrincipalKey(r => r.LojaId);
         }
     }
 }

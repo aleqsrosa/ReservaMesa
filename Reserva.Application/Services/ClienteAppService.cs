@@ -35,7 +35,7 @@ namespace Reserva.Application.Services
 
         public List<ClienteDTO> GetAll()
         {
-            return _mapper.Map<List<ClienteDTO>>(_clienteRepository.GetAll());
+            return _mapper.Map<List<ClienteDTO>>(_clienteRepository.GetAll<Cliente>(cliente => cliente.Reserva));
         }
 
         public ClienteDTO GetById(int id)

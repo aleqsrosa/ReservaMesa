@@ -15,15 +15,15 @@ namespace Reserva.Application.Services
     {
         private readonly IReservaRepository _reservaRepository;
         private readonly IClienteRepository _clienteRepository;
-        private readonly ILojaAppService _lojaAppService;
+        private readonly ILojaRepository _lojaRepository;
         private readonly IMapper _mapper;
 
-        public ReservaAppService(IReservaRepository reservaRepository, IMapper mapper, IClienteRepository clienteRepository, ILojaAppService lojaAppService)
+        public ReservaAppService(IReservaRepository reservaRepository, IMapper mapper, IClienteRepository clienteRepository, ILojaRepository lojaRepository)
         {
             _reservaRepository = reservaRepository;
             _mapper = mapper;
             _clienteRepository = clienteRepository;
-            _lojaAppService = lojaAppService;
+            _lojaRepository = lojaRepository;
         }
 
         public void Delete(int id)
@@ -38,7 +38,7 @@ namespace Reserva.Application.Services
 
         public List<ReservaDTO> GetAll()
         {
-            return _mapper.Map<List<ReservaDTO>>(_reservaRepository.GetAll());
+            return _mapper.Map<List<ReservaDTO>>(_reservaRepository.GetAll<Domain.Entities.Reserva>(reserva => reserva.Cliente));
         }
 
         public ReservaDTO GetById(int id)
@@ -48,7 +48,7 @@ namespace Reserva.Application.Services
 
         public void Post(ReservaDTO ReservaDTO)
         {
-            Loja loja = _mapper.Map<Loja>(_lojaAppService.GetById(ReservaDTO.LojaId));
+            Loja loja = _lojaRepository.GetById(ReservaDTO.LojaId);
 
             if (loja == null)
                 throw new Exception("Loja não encontrada");
