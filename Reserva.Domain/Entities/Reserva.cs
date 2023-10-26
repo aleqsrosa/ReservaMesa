@@ -73,9 +73,12 @@ namespace Reserva.Domain.Entities
         public void AtualizarHorario(DateTime novaData)
         {
             if (Data >= novaData)
-            {
                 throw new InvalidOperationException("Horário precisa ser maior que o anterior.");
-            }
+
+            TimeSpan diff = Data - DateTime.Now;
+
+            if (diff.TotalHours < 24)
+                throw new InvalidOperationException("Não é mais possível alterar sua reserva.");
 
             Data = novaData;
         }

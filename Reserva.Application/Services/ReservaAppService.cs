@@ -58,16 +58,16 @@ namespace Reserva.Application.Services
             if (cliente == null)
                 throw new Exception("Cliente não encontrado");
 
-            var reserva = new Domain.Entities.Reserva(cliente, loja, ReservaDTO.Horario, ReservaDTO.QtdReserva, ReservaDTO.Turno);
+            var reserva = new Domain.Entities.Reserva(cliente, loja, ReservaDTO.Data, ReservaDTO.QtdReserva, ReservaDTO.Turno);
 
             _reservaRepository.Create(reserva);
         }
 
         public void Put(ReservaDTO ReservaDTO)
         {
-            Domain.Entities.Reserva reserva = _reservaRepository.GetById<Domain.Entities.Reserva>(ReservaDTO.Id);
+            Domain.Entities.Reserva reserva = _reservaRepository.GetById<Domain.Entities.Reserva>(ReservaDTO.Id, x => x.Loja);
 
-            reserva.AtualizarHorario(ReservaDTO.Horario);
+            reserva.AtualizarHorario(ReservaDTO.Data);
 
             reserva.AtualizarQuantidade(ReservaDTO.QtdReserva);
 
