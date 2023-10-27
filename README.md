@@ -13,10 +13,10 @@ Uma vez que a loja estiver cadastrada, o cliente poderá reservar mesas para uma
 
 # Participantes do projeto:
   
-- Alex dos Santos Rosa; 
--	Davi Emanuel Torres de Souza Nogueira;
--	Fillipe Luis da Silva;
--	Pedro Henrique Sousa de Abreu.
+- [Alex dos Santos Rosa](https://github.com/aleqsrosa); 
+-	[Davi Emanuel Torres de Souza Nogueira](https://github.com/daviEmanuelNogueira);
+-	[Fillipe Luis da Silva](https://github.com/fillipelsilva);
+-	[Pedro Henrique Sousa de Abreu](https://github.com/PedroAbreuHS).
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ Para executar esses projetos você precisa seguir as etapas abaixo:
 # Banco de dados:
   
 Este projeto está usando SQL Server, você pode usar uma instância que instalou em seu desktop. 
-Não será necessário alterar a connection string, pois o projeto foi configurado para utilização de uma instância padrão (local) considerando autenticação do próprio Windows, bastando apenas abrir o package maneger console e rodar o comando update-database apontando para o projeto reserva.infra.data.
+Não será necessário alterar a connection string, pois o projeto foi configurado para utilização de uma instância padrão (local) considerando autenticação do próprio Windows, bastando apenas abrir o package manager console e rodar o comando update-database apontando para o projeto reserva.infra.data.
 
 # API:
 Esta API foi desenvolvida em .NET 7 e é um padrão simples para separar as soluções em algumas camadas. 
