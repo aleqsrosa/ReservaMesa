@@ -18,7 +18,7 @@ namespace Reserva.Application.AutoMapper
         {
             #region ViewModelToDomain
             //Cliente
-            CreateMap<ClienteDTO, Cliente>().ForMember(x => x.Reservas, opt => opt.Ignore()).ReverseMap();
+            CreateMap<ClienteDTO, Cliente>();
 
             //Loja
             CreateMap<LojaDTO, Loja>();
