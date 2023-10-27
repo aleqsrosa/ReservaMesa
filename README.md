@@ -1,79 +1,63 @@
-# ReservaMesa
- FIAP - Tech Challenge 
+# Nome Projeto:
 
-# ReservaMesa
-strongly-typed id
+Projeto Gestão de Reservas de Mesas de Redes de Restaurantes.
 
-Domínio – Restaurante, servir comida e experiências para o cliente.
-Subdomínio principal – fazer comida
-Subdomínio de Suporte – Cozinha, operacional (garçom, estacionamento)
-Subdomínio genérico – Tecnologia, RH, Marketing, financeiro
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Linguagem ubíqua – cliente, 
-----------------------------------------------------------------------
+# Descrição do projeto:
+  
+Projeto desenvolvido pelo grupo de estudos da Pós Tech FIAP do curso: Arquitetura de Sistemas .NET com Azure. Trata-se de um sistema que possui a finalidade de gerenciar e otimizar o processo de reservas de mesas de uma rede de restaurantes. Portanto, o responsável pela rede/restaurante, realizará o seu cadastro na aplicação, no qual poderá disponibilizar a capacidade da loja para a realização das reservas.<br>
+Uma vez que a loja estiver cadastrada, o cliente poderá reservar mesas para uma data específica naquela loja.
 
-Funcionalidades
-- cadastro do restaurante
-* nome
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- cadastro de cliente 
-* nome, contato, data de nascimento
+# Participantes do projeto:
+  
+- [Alex dos Santos Rosa](https://github.com/aleqsrosa); 
+-	[Davi Emanuel Torres de Souza Nogueira](https://github.com/daviEmanuelNogueira);
+-	[Fillipe Luis da Silva](https://github.com/fillipelsilva);
+-	[Pedro Henrique Sousa de Abreu](https://github.com/PedroAbreuHS).
 
-- reserva
-* quantidade de pessoas
-* data e horário da reserva
-* quem está reservando
-* realizar reserva
-* cancelar reserva
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Requisitos Funcionais:
+  
+-	Possuir lista de lojas disponíveis por rede;
+-	Apresentar a listagem de mesas disponíveis para reservas conforme a loja escolhida;
+-	Ter API para reservar as mesas conforme a loja escolhida, disponibilidade, horário e a capacidade.
 
-Loja (loja representa uma unidade de uma rede de restaurante)
-- horario de funcionamento,
-- endereço,
-- capacidade
-- contato
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----------------------------------------------------------
-- Objeto de valor
-* Endereço do restaurante
-* Nome completo 
+# Critérios de Aceite (Requisitos mínimos – Regras de Negócios):
 
--Entidade
-* Loja 
-* Cliente
-* Reserva
-* Mesa
-* Rede de resturante
+-	Ajustes e edições de reserva só serão permitidos com 24 horas de antecedência;
+-	Ajustes e edições de reserva só serão permitidos no restaurante selecionado previamente;
+-	Possível selecionar apenas as mesas disponíveis, não reservadas, contendo data e hora da reserva;
+-	Mesas com capacidade máxima de dez lugares;
+-	Será possível selecionar uma quantidade maior de lugares, uma mesa possui cinco lugares, considerando que exista disponibilidade na capacidade do restaurante (o restaurante poderá ajustar mesas, juntando e etc...);
+-	Máximo de lugares por reserva.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- Loja
----------------------------------------------------------
-Regras de negócio
-- editar reserva no máximo 24h de antecedencia (alterar reserva) DAVI
-<!-- - será permitido selecionar uma quantidade maior do que a mesa de maior capacidade do restaurante,   considerando que exista disponibilidade na capacidade  -->
-- verificar se a quantidade de pessoas na reserva execede a capacidade do máxima e disponível da loja para aquele dia. FILLIPE
-- máximo de lugares por reserva de 10 FILLIPE
-- seleciona mesa disponível, data e hora da reserva OK
-- edição somente poderá ser feita no restaurante selecionado previamente OK
-- Lista de espera, cliente pode se cadastrar na fila de espera e caso exista disponiblidade ele seja notificado  (extra)
-- permanência da reserva (extra)
+# Desenvolvimento (Como rodar):
+  
+Para executar esses projetos você precisa seguir as etapas abaixo:
+-	Acessar o repositório do projeto através do link: https://github.com/aleqsrosa/ReservaMesa/tree/main;
+-	Baixar o zip do projeto ou fazer um fork do mesmo;
+-	Execute o projeto de API;
+-	Seguir o seguinte fluxo: cadastrar uma rede de restaurantes, cadastrar uma loja, cadastrar um cliente, assim conseguirá registrar uma reserva;
+-	Fazer as chamadas REST através do Swagger que será iniciado juntamente com a aplicação.
 
----------------------------------------------------------
-* Para fazer
-- Ajustar controllers 
-    -- correção url. ex(cliente) OK
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- Testar todos os fluxos 
-    -- teste geral da api,
+# Banco de dados:
+  
+Este projeto está usando SQL Server, você pode usar uma instância que instalou em seu desktop. 
+Não será necessário alterar a connection string, pois o projeto foi configurado para utilização de uma instância padrão (local) considerando autenticação do próprio Windows, bastando apenas abrir o package manager console e rodar o comando update-database apontando para o projeto reserva.infra.data.
 
-- documentação PEDRO
-    -- README completo
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- Regra de negócio 
-    -- validar todas as regras
+# API:
+Esta API foi desenvolvida em .NET 7 e é um padrão simples para separar as soluções em algumas camadas. 
+Para executar este projeto você pode usar VS Code ou VS 2022.
 
-- extra
-    -- Fazer as validações a nível de camada de aplicação
-    -- Especificar melhor os DTOs na camada de aplicação
-    -- Tratar melhos as mensagens de erro
-    -- Permitir com que a loja possa alterar a capacidade individual de reserva
