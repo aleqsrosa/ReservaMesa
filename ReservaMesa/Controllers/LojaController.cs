@@ -29,7 +29,7 @@ namespace ReservaMesa.Controllers
                 return BadRequest(ModelState);
 
             _lojaService.Post(new LojaDTO(lojaDTO));
-            return Ok("Loja Cadastrado");
+            return Ok("Loja Cadastrada");
         }
 
         [HttpGet("BuscarPorId/{id}")]
@@ -42,14 +42,14 @@ namespace ReservaMesa.Controllers
         public IActionResult Put(AtualizarLojaDTO lojaDTO)
         {
             _lojaService.Put(new LojaDTO(lojaDTO));
-            return Ok("Loja alterado");
+            return Ok("Loja alterada");
         }
 
         [HttpDelete("DeletarLoja")]
         public IActionResult Delete(int Id)
         {
             _lojaService.Delete(Id);
-            return Ok("Loja excluído");
+            return Ok("Loja excluída");
         }
     }
 }
