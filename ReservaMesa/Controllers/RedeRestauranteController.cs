@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Reserva.Application.DTO;
+using Reserva.Application.DTO.RedeRestaurante;
 using Reserva.Application.Interfaces;
 
 namespace ReservaMesa.Controllers
@@ -24,12 +24,12 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpPost("CadastraRedeRestaurante")]
-        public IActionResult Post(RedeRestauranteDTO RedeRestauranteDTO)
+        public IActionResult Post(CadastrarRedeRestauranteDTO RedeRestauranteDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _redeRestauranteService.Post(RedeRestauranteDTO);
+            _redeRestauranteService.Post(new RedeRestauranteDTO(RedeRestauranteDTO));
             return Ok("RedeRestaurante Cadastrado");
         }
 
