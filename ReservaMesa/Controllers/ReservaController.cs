@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Reserva.Application.DTO;
+using Reserva.Application.DTO.Reserva;
 using Reserva.Application.Interfaces;
 
 namespace ReservaMesa.Controllers
@@ -23,12 +23,12 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpPost("FazerReserva")]
-        public IActionResult FazerReserva(ReservaDTO ReservaDTO)
+        public IActionResult FazerReserva(CadastrarReservaDTO reservaDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _reservaService.Post(ReservaDTO);
+            _reservaService.Post(new ReservaDTO(reservaDTO));
             return Ok("Reserva Cadastrada");
         }
 
@@ -39,9 +39,9 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpPut("AlterarReserva")]
-        public IActionResult AlterarReserva(ReservaDTO ReservaDTO)
+        public IActionResult AlterarReserva(AtualizarReservaDTO reservaDTO)
         {
-            _reservaService.Put(ReservaDTO);
+            _reservaService.Put(new ReservaDTO(reservaDTO));
             return Ok("Reserva alterada");
         }
 

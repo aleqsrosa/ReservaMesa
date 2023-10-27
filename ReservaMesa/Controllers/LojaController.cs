@@ -39,9 +39,9 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpPut("AlterarLoja")]
-        public IActionResult Put(LojaDTO lojaDTO)
+        public IActionResult Put(AtualizarLojaDTO lojaDTO)
         {
-            _lojaService.Put(lojaDTO);
+            _lojaService.Put(new LojaDTO(lojaDTO));
             return Ok("Loja alterado");
         }
 

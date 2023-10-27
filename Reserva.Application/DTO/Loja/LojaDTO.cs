@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Reserva.Application.DTO.Reserva;
 
 namespace Reserva.Application.DTO.Loja
 {
@@ -22,6 +23,23 @@ namespace Reserva.Application.DTO.Loja
 
         public LojaDTO(CadastrarLojaDTO cadastrarLojaDTO)
         {
+            Nome = cadastrarLojaDTO.Nome;
+            RedeRestauranteId = cadastrarLojaDTO.RedeRestauranteId;
+            CapacidadeTotal = cadastrarLojaDTO.CapacidadeTotal;
+            Endereco = new EnderecoDTO()
+            {
+                Numero = cadastrarLojaDTO.Endereco.Numero,
+                CEP = cadastrarLojaDTO.Endereco.CEP,
+                Complemento = cadastrarLojaDTO.Endereco.Complemento,
+                Cidade = cadastrarLojaDTO.Endereco.Cidade,
+                Rua = cadastrarLojaDTO.Endereco.Rua,
+                Bairro = cadastrarLojaDTO.Endereco.Bairro
+            };
+        }
+
+        public LojaDTO(AtualizarLojaDTO cadastrarLojaDTO)
+        {
+            Id = cadastrarLojaDTO.Id;
             Nome = cadastrarLojaDTO.Nome;
             RedeRestauranteId = cadastrarLojaDTO.RedeRestauranteId;
             CapacidadeTotal = cadastrarLojaDTO.CapacidadeTotal;

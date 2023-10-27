@@ -1,4 +1,4 @@
-﻿using Reserva.Application.DTO;
+﻿using Reserva.Application.DTO.Reserva;
 using System;
 using System.Collections.Generic;
 using System.Linq;

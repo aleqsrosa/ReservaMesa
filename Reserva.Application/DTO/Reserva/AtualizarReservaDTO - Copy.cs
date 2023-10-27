@@ -6,15 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Reserva.Application.DTO
+namespace Reserva.Application.DTO.Reserva
 {
-    public class ReservaDTO :  BaseDTO
+    public class AtualizarReservaDTO : BaseDTO
     {
-        public int ClienteId { get; set; }
-        public int LojaId { get; set; }
         public DateTime Data { get; set; }
         public int QtdReserva { get; set; }
         public TurnoEnum Turno { get; set; }
-        public ClienteDTO Cliente { get; set; }
     }
 }
