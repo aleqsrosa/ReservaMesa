@@ -55,6 +55,8 @@ Para executar esses projetos você precisa seguir as etapas abaixo:
 Este projeto está usando SQL Server, você pode usar uma instância que instalou em seu desktop. 
 Não será necessário alterar a connection string, pois o projeto foi configurado para utilização de uma instância padrão (local) considerando autenticação do próprio Windows, bastando apenas abrir o package manager console e rodar o comando update-database apontando para o projeto reserva.infra.data.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # API:
 Esta API foi desenvolvida em .NET 7 e é um padrão simples para separar as soluções em algumas camadas. 
 Para executar este projeto você pode usar VS Code ou VS 2022.
