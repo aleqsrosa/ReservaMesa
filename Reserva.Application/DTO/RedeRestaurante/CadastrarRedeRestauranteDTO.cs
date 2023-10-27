@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Reserva.Application.DTO
+namespace Reserva.Application.DTO.RedeRestaurante
 {
-    public class RedeRestauranteDTO : BaseDTO
+    public class CadastrarRedeRestauranteDTO
     {
         public string Nome { get; set; }
+
     }
 }
