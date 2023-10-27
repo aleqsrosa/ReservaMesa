@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Reserva.Application.DTO;
+using Reserva.Application.DTO.Loja;
 using Reserva.Application.Interfaces;
 
 namespace ReservaMesa.Controllers
@@ -23,12 +23,12 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpPost("CadastrarLoja")]
-        public IActionResult Post(LojaDTO lojaDTO)
+        public IActionResult Post(CadastrarLojaDTO lojaDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _lojaService.Post(lojaDTO);
+            _lojaService.Post(new LojaDTO(lojaDTO));
             return Ok("Loja Cadastrado");
         }
 

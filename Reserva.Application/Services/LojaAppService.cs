@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Reserva.Application.DTO;
+using Reserva.Application.DTO.Loja;
 using Reserva.Application.Interfaces;
 using Reserva.Domain.Entities;
 using Reserva.Domain.Interface;

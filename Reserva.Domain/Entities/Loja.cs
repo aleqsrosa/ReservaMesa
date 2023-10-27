@@ -17,7 +17,7 @@ namespace Reserva.Domain.Entities
         public Loja(string nome, Endereco endereco, int redeRestauranteId, int capacidadeTotal)
         {
             Nome = nome;
-            Endereco = new Endereco(endereco.Rua, endereco.Bairro, endereco.Numero, endereco.Cidade, endereco.CEP);
+            Endereco = new Endereco(endereco.Rua, endereco.Bairro, endereco.Numero, endereco.Cidade, endereco.CEP, endereco.Complemento);
             RedeRestauranteId = redeRestauranteId;
             CapacidadeTotal = capacidadeTotal;
         }

@@ -20,7 +20,6 @@ namespace Reserva.Application.DTO.Cliente
         {
             Nome = clienteDTO.Nome;
             Telefone = clienteDTO.Telefone;
-
         }
     }
 }

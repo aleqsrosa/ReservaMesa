@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace Reserva.Application.DTO
 {
     public class EnderecoDTO 
-    {        
+    {
+        public EnderecoDTO()
+        {
+        }
+
         public string Rua { get; set; }
         public string Bairro { get; set; }
         public int Numero { get; set; }

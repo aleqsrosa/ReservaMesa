@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Reserva.Application.DTO;
 using Reserva.Application.DTO.Cliente;
+using Reserva.Application.DTO.Loja;
 using Reserva.Domain.Entities;
 using System;
 using System.Collections.Generic;

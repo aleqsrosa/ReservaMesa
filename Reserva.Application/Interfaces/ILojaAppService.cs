@@ -1,4 +1,4 @@
-﻿using Reserva.Application.DTO;
+﻿using Reserva.Application.DTO.Loja;
 using System;
 using System.Collections.Generic;
 using System.Linq;
