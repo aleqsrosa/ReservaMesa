@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Reserva.Application.DTO;
+using Reserva.Application.DTO.Cliente;
 using Reserva.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,18 @@ namespace Reserva.Application.AutoMapper
         public AutoMapperSetup()
         {
             #region ViewModelToDomain
+            //Cliente
+            CreateMap<ClienteDTO, Cliente>().ForMember(x => x.Reservas, opt => opt.Ignore()).ReverseMap();
 
-            CreateMap<ClienteDTO, Cliente>();
-            CreateMap<LojaDTO, Loja>(); 
+            //Loja
+            CreateMap<LojaDTO, Loja>();
+            
+            //RedeRestaurante
             CreateMap<RedeRestauranteDTO, RedeRestaurante>();
+            //Reserva
             CreateMap<ReservaDTO, Domain.Entities.Reserva>();
+
+            //Endereco
             CreateMap<EnderecoDTO, Endereco>();
 
             #endregion

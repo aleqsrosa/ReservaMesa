@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Reserva.Application.DTO;
+using Reserva.Application.DTO.Cliente;
 using Reserva.Application.Interfaces;
 using System.Security.Claims;
 
@@ -25,12 +25,12 @@ namespace ReservaMesa.Controllers
         }
 
         [HttpPost("CadastrarCliente"), AllowAnonymous]
-        public IActionResult Post(ClienteDTO clienteDTO)
+        public IActionResult Post(CadastrarClienteDTO clienteDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _clienteService.Post(clienteDTO);
+            _clienteService.Post(new ClienteDTO(clienteDTO));
             return Ok("Cliente Cadastrado");
         }
 

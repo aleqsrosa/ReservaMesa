@@ -1,4 +1,5 @@
-﻿using Reserva.Domain.Enums;
+﻿using Reserva.Application.DTO.Cliente;
+using Reserva.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
