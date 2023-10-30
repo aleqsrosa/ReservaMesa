@@ -13,10 +13,10 @@ Uma vez que a loja estiver cadastrada, o cliente poderá reservar mesas para uma
 
 # Participantes do projeto:
   
-- [Alex dos Santos Rosa](https://github.com/aleqsrosa); 
--	[Davi Emanuel Torres de Souza Nogueira](https://github.com/daviEmanuelNogueira);
--	[Fillipe Luis da Silva](https://github.com/fillipelsilva);
--	[Pedro Henrique Sousa de Abreu](https://github.com/PedroAbreuHS).
+- [Alex dos Santos Rosa](https://github.com/aleqsrosa) - RM352258; 
+-	[Davi Emanuel Torres de Souza Nogueira](https://github.com/daviEmanuelNogueira) - RM;
+-	[Fillipe Luis da Silva](https://github.com/fillipelsilva) - RM325110;
+-	[Pedro Henrique Sousa de Abreu](https://github.com/PedroAbreuHS) - RM352428.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
