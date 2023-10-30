@@ -30,9 +30,9 @@ Uma vez que a loja estiver cadastrada, o cliente poderá reservar mesas para uma
 
 # Critérios de Aceite (Requisitos mínimos – Regras de Negócios):
 
--	Ajustes e edições de reserva só serão permitidos com 24 horas de antecedência;
--	Ajustes e edições de reserva só serão permitidos no restaurante selecionado previamente;
--	Possível selecionar apenas as mesas disponíveis, não reservadas, contendo data e hora da reserva;
+-	Ajustes e edições de reserva só serão permitidos com mais de 24 horas de antecedência;
+-	Ajustes e edições de reserva só serão permitidos no restaurante, previamente, selecionado;
+-	Possível selecionar apenas as mesas disponíveis, não reservadas, contendo data e turno da reserva;
 -	Mesas com capacidade máxima de dez lugares;
 -	Será possível selecionar uma quantidade maior de lugares, uma mesa possui cinco lugares, considerando que exista disponibilidade na capacidade do restaurante (o restaurante poderá ajustar mesas, juntando e etc...);
 -	Máximo de lugares por reserva.
